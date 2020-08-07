@@ -1,4 +1,4 @@
-package org.zerook.web;
+package org.zerock.web;
 
 import java.text.DateFormat;
 import java.util.Date;
@@ -34,6 +34,5 @@ public class HomeController {
 		model.addAttribute("serverTime", formattedDate );
 		
 		return "home";
-	}
-	
+	}	
 }
