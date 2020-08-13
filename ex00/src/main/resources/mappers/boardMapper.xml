@@ -45,16 +45,28 @@
 
 	<select id="listCriteria" resultType="org.zerock.domain.BoardVO">
 	<![CDATA[
-	select 
+	select
 	  bno,title,content,writer,regdate, viewcnt
 	from 
 	  tbl_board
 	where bno>0
 	order by bno desc, regdate desc
-	limit #{pageStart}, #{perPageNum}
+	offset #{pageStart} ROWS
+	Fetch next #{perPageNum} rows only
 	]]>
 	</select>
-
+	<select id="listPage" resultType="org.zerock.domain.BoardVO">
+	<![CDATA[
+	select
+	  bno,title,content,writer,regdate, viewcnt
+	from 
+	  tbl_board
+	where bno>0
+	order by bno desc, regdate desc
+	offset #{page} ROWS
+	Fetch next 10 rows only
+	]]>
+	</select>
 	
 	
 </mapper>  

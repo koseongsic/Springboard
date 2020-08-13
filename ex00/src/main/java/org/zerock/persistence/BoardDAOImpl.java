@@ -5,6 +5,7 @@ import javax.inject.Inject;
 import org.apache.ibatis.session.SqlSession;
 import org.springframework.stereotype.Repository;
 import org.zerock.domain.BoardVO;
+import org.zerock.domain.Criteria;
 import org.zerock.domain.MemberVo;
 
 
@@ -46,5 +47,21 @@ public class BoardDAOImpl implements BoardDAO {
 	public int getcount() throws Exception {
 		// TODO Auto-generated method stub
 		return sqlSession.selectOne("namespace+.getcount");
+	}
+
+	@Override
+	public List<BoardVO> listPage(int page) throws Exception {
+		// TODO Auto-generated method stub
+		if(page<0) {
+			page = 1;			
+		}
+		page = (page-1)*10;
+		return sqlSession.selectList(namespace+".listPage",page);
+	}
+
+	@Override
+	public List<BoardVO> listCriteria(Criteria cri) throws Exception {
+		// TODO Auto-generated method stub
+		return sqlSession.selectList(namespace+".listCriteria",cri);
 	}
 }

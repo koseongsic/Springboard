@@ -2,6 +2,7 @@
 	pageEncoding="utf-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <%@ page session="false"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %> 
 <html xmlns="http://www.w3.org/1999/xhtml">
 
 <head>
@@ -35,22 +36,22 @@
 
 		</tbody>
 	</table>
-	<nav aria-label="Page navigation">
-		<ul class="pagination">
-			<!-- disabled가 있으면 마우스 커서가 금지표시로 바뀐다. -->
-			<li class=disabled><a href="#" aria-label="Previous"> <span
-					aria-hidden="true">«</span>
-			</a></li>
-			<!-- 현재 페이지 -->
-			<li class="active"><a href="#">1</a></li>
-				<li><a href="#">2</a></li>
-				<li><a href="#">3</a></li>
-				<li><a href="#">4</a></li>
-				<li><a href="#">5</a></li>
-				<li><a href="#" aria-label="Next"> <span aria-hidden="true">»</span>
-			</a></li>
-		</ul>
-	</nav>
+	<div class="text-center">
+		<ui class="pagination">
+			<c:if test="${pageMaker.prev}">
+				<li><a href="listPage?page=${pageMaker.startPage-1}">&laquo;</a></li>
+			</c:if>	
+			
+			<c:forEach begin ="${pageMaker.startPage}" end="${pageMaker.endPage}" var="idx">
+				<li
+				  <c:out value="${pageMaker.cri.page ==idx ?' class=active ':''}"/>>
+				  <a href ="listPage?Page=${idx}">${idx}</a>			
+			</c:forEach>
+			<c:if test="${pageMaker.next && pageMaker.endPage>0}">
+				<li><a href = "listPage?page=${pageMaker.endPage+1}">&raquo;</a></li>
+			</c:if>
+		</ui>
+	</div>
 </body>
 <div>
 	<a href='/board/register' onClick='fn_write()' class="btn btn-success">글쓰기</a>

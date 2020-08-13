@@ -21,13 +21,14 @@
         <caption> 게시판 글쓰기 </caption>
     </thead>
     <tbody>   
+    	<form action="/board/register" method="post" >
             <tr>
                 <th>제목: </th>
                 <td><textarea type="text" name="title" class="form-control"/>${boardVO.title }</textarea></td>
             </tr>
             <tr>
                 <th>내용: </th>
-                <td><textarea cols="10" rows="20" name="content" class="form-control"/>${boardVO.content }</textarea></td>
+                <td><textarea cols="10" rows="20" name="content" class="form-control"/>${boardVO.content}</textarea></td>
             </tr>
             <tr>
                 <th>작성자: </th>
@@ -35,7 +36,7 @@
             </tr>
             <tr>
                 <td colspan="2">
-                    <button class="pull-right">수정</button>
+                    <button type="submitt" class="pull-right">수정완료</button>
                     <input type="button" value="글 목록으로... " class="pull-right" button onclick="location.href='/board/listAll'"/>
                 </td>
             </tr>

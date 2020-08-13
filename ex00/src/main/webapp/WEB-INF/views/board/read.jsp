@@ -35,7 +35,7 @@
             </tr>
             <tr>
                 <td colspan="2">
-                    <button href ='/board/modify?bno=${boardVO.bno}' class="pull-right">수정</button>
+                    <input type="button" value="수정 " class="pull-right" button onclick="location.href='/board/modify?bno=${boardVO.bno}'"/>
                     <input type="button" value="글 목록으로... " class="pull-right" button onclick="location.href='/board/listAll'"/>
                 </td>
             </tr>
