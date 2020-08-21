@@ -11,7 +11,7 @@
   <meta name="description" content="" />
   <meta name="author" content="" />
 
-  <title>Ninom</title>
+  <title>Seongsic</title>
 
   <!-- slider stylesheet -->
   <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.1.3/assets/owl.carousel.min.css" />
@@ -89,7 +89,7 @@
                   <a class="nav-link" href="/">About </a>
                 </li>
                 <li class="nav-item">
-                  <a class="nav-link" href="/board/listAll">게시판</a>
+                  <a class="nav-link" href="/board/listPage">게시판</a>
                 </li>
                 <li class="nav-item">
                   <a class="nav-link" href="#">Login</a>

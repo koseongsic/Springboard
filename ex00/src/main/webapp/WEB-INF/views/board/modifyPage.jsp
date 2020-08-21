@@ -21,23 +21,24 @@
         <caption> 게시판 글쓰기 </caption>
     </thead>
     <tbody>   
+    	<form action="/board/modifyPage" method="post" >
             <tr>
                 <th>제목: </th>
-                <td><textarea type="text" name="title" class="form-control" readonly="readonly"/>${boardVO.title }</textarea></td>
+                <td><textarea type="text" name="title" class="form-control"/>${boardVO.title }</textarea></td>
             </tr>
             <tr>
                 <th>내용: </th>
-                <td><textarea cols="10" rows="20" name="content" class="form-control" readonly="readonly">${boardVO.content }</textarea></td>
+                <td><textarea cols="10" rows="20" name="content" class="form-control"/>${boardVO.content}</textarea></td>
             </tr>
             <tr>
                 <th>작성자: </th>
-                <td><textarea cols="10"  name="writer" class="form-control" readonly="readonly">${boardVO.writer }</textarea></td>
+                <td><textarea cols="10"  name="writer" class="form-control">${boardVO.writer }</textarea></td>
             </tr>
+            <input type='hidden' name='bno' value="${boardVO.bno}"/>
             <tr>
                 <td colspan="2">
-                    <button type="submit"  class="pull-right" button onclick="location.href='/board/modify?bno=${boardVO.bno}'">수정</button>
-                    <button type="submit"  class="pull-right" button onclick="location.href='/board/listPage'">글목록으로</button>
-                    <button type="submit"  class="pull-right" button onclick="location.href='/board/listPage'">삭제</button>
+                    <button type="submitt" class="pull-right" >수정완료</button>
+                    <input type="button" value="글 목록으로... " class="pull-right" button onclick="location.href='/board/listPage'"/>
                 </td>
             </tr>
     </tbody>

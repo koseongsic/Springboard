@@ -19,8 +19,8 @@
 <table class="table table-bordered">
     <thead>
         <caption> 게시판 글쓰기 </caption>
-    </thead>
-    <tbody>   
+    </thead> 
+    <tbody> 
             <tr>
                 <th>제목: </th>
                 <td><textarea type="text" name="title" class="form-control" readonly="readonly"/>${boardVO.title }</textarea></td>
@@ -35,12 +35,24 @@
             </tr>
             <tr>
                 <td colspan="2">
-                    <button type="submit"  class="pull-right" button onclick="location.href='/board/modify?bno=${boardVO.bno}'">수정</button>
-                    <button type="submit"  class="pull-right" button onclick="location.href='/board/listPage'">글목록으로</button>
-                    <button type="submit"  class="pull-right" button onclick="location.href='/board/listPage'">삭제</button>
+                	<form action="/board/modifyPage" method="get" >
+                	<input type='hidden'  class="form-control" name='bno' value= "${boardVO.bno}">
+                    <button type="submit" class="pull-right modifyBtn">수정</button>
+                    </form>
+                    <form action="/board/listPage" method="get" > 
+                    <button type="submit" class="pull-right goListBtn">글목록으로</button>
+                    </form>
+                    <form action="/board/removePage" method="post" >
+                        <input type='hidden'  class="form-control" name='bno' value= "${boardVO.bno}">
+                		<input type='hidden'  class="form-control" name='page' value= "${cri.page}">
+		   				<input type='hidden'  class="form-control" name='perPageNum' value= "${cri.perPageNum}"> 
+                    <button type="submit" class="pull-right removeBtn">삭제</button>
+                    </form>             
                 </td>
             </tr>
     </tbody>
+
+
 </table>
 </div>
 </body>

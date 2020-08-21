@@ -6,6 +6,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -38,7 +39,7 @@ public class BoardController {
 
 		rttr.addFlashAttribute("msg", "SUCCESS");
 
-		return "redirect:/board/listAll";
+		return "redirect:/board/listPage";
 	}
 
 	@RequestMapping(value = "/listOne", method = RequestMethod.GET)
@@ -74,11 +75,26 @@ public class BoardController {
 		model.addAttribute(service.read(bno));
 	}
 	
+	
+	@RequestMapping(value = "/readPage", method = RequestMethod.GET)
+	public void read(@RequestParam("bno") int bno,@ModelAttribute("cri") Criteria cri,Model model) throws Exception {
+		model.addAttribute(service.read(bno));
+	}
+	
 	@RequestMapping(value = "/remove", method = RequestMethod.POST)
 	public String remove(@RequestParam("bno") int bno, RedirectAttributes rttr) throws Exception {
 		service.remove(bno);
 		rttr.addFlashAttribute("msg", "SUCCESS");
 		return "redirect:/board/listAll";
+	}
+	@RequestMapping(value = "/removePage", method = RequestMethod.POST)
+	public String removePage(@RequestParam("bno") int bno,Criteria cri ,RedirectAttributes rttr) throws Exception {
+		service.remove(bno);
+		rttr.addAttribute("page",cri.getpage());
+		rttr.addAttribute("perPageNum",cri.getPerPageNum());
+		rttr.addFlashAttribute("msg","Success");
+		
+		return "redirect:/board/listPage";
 	}
 	
 	@RequestMapping(value = "/modify", method = RequestMethod.GET)
@@ -93,6 +109,25 @@ public class BoardController {
 		service.modify(vo);
 		rttr.addFlashAttribute("msg", "SUCCESS");
 		
-		return "redirect:/board/listAll";
+		return "redirect:/board/listPage";
 	}
+	@RequestMapping(value = "/modifyPage", method = RequestMethod.GET)
+	public void modifyPageGet(int bno,Model model,RedirectAttributes rttr) throws Exception {
+		model.addAttribute(service.read(bno));		
+	}
+	
+	@RequestMapping(value = "/modifyPage", method = RequestMethod.POST)
+	public String modifyPagePOST(BoardVO vo, RedirectAttributes rttr) throws Exception {
+		logger.info("mod post......");
+		
+		service.modify(vo);
+		rttr.addFlashAttribute("msg", "SUCCESS");
+		
+		return "redirect:/board/listPage";
+	}
+	
+	
+	
+	
+	
 }

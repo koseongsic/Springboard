@@ -21,7 +21,7 @@
         <caption> 게시판 글쓰기 </caption>
     </thead>
     <tbody>   
-    	<form action="/board/register" method="post" >
+    	<form action="/board/modifyPage" method="post" >
             <tr>
                 <th>제목: </th>
                 <td><textarea type="text" name="title" class="form-control"/>${boardVO.title }</textarea></td>
@@ -34,10 +34,11 @@
                 <th>작성자: </th>
                 <td><textarea cols="10"  name="writer" class="form-control">${boardVO.writer }</textarea></td>
             </tr>
+            <input type='hidden' name='bno' value="${boardVO.bno}"/>
             <tr>
                 <td colspan="2">
                     <button type="submitt" class="pull-right">수정완료</button>
-                    <input type="button" value="글 목록으로... " class="pull-right" button onclick="location.href='/board/listAll'"/>
+                    <input type="button" value="글 목록으로... " class="pull-right" button onclick="location.href='/board/listpage'"/>
                 </td>
             </tr>
     </tbody>

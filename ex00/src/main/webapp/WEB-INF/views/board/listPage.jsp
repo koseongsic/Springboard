@@ -25,7 +25,7 @@
 				<tr>
 					<th>${boardVO.bno}</th>
 					<td style="cursor: pointer;"
-						onClick="location.href='/board/read?bno=${boardVO.bno}'">
+						onClick="location.href='/board/readPage?bno=${boardVO.bno}'">
 						${boardVO.title}
 					</th>
 					<th>${boardVO.writer}</th>
